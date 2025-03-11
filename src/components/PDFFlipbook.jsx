@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"; // Import useEffect
 import { Document, Page, pdfjs } from "react-pdf";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios"; // Import axios for fetching the PDF
-
+import "./PDFFlipbook.css";
 // Set up the PDF worker
 pdfjs.GlobalWorkerOptions.workerSrc = `${process.env.PUBLIC_URL}/pdf.worker.mjs`;
 
@@ -60,7 +60,7 @@ const PdfViewer = () => {
           </button>
 
           {/* PDF Document */}
-          {pdfBlobUrl && (
+          {/* {pdfBlobUrl && (
             <Document
               file={pdfBlobUrl} // Use the Blob URL
               onLoadSuccess={onDocumentLoadSuccess}
@@ -68,7 +68,7 @@ const PdfViewer = () => {
             >
               <Page pageNumber={pageNumber} width={800} />
             </Document>
-          )}
+          )} */}
 
           {/* Navigation Buttons */}
           <div className="navigation-buttons">
@@ -90,6 +90,17 @@ const PdfViewer = () => {
           <p className="page-indicator">
             Page {pageNumber} of {numPages}
           </p>
+          {pdfBlobUrl && (
+            <Document
+              file={pdfBlobUrl} // Use the Blob URL
+              onLoadSuccess={onDocumentLoadSuccess}
+              onLoadError={(error) => console.error("Error loading PDF:", error)}
+            >
+              <Page pageNumber={pageNumber} renderTextLayer={false} 
+  renderAnnotationLayer={false} 
+  width={window.innerWidth > 800 ? 800 : window.innerWidth * 0.9}/>
+            </Document>
+          )}
         </>
       )}
     </div>

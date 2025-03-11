@@ -4,8 +4,9 @@ import './BytestreamsPage.css';
 import logoImage1 from '../assets/cse.png';
 import bufferedReaderImage from '../assets/buffered_reader.png';
 import { useNavigate } from "react-router-dom";
+import Navbar from './Navbar';
 const BUFFERED_READERS_FOLDER_ID = "1nvs0pbcerRm-1pCcLOk-WJSPZ5pZnnU5"; // Replace with your actual Folder ID
-const API_KEY = "AIzaSyCrKnWIvGZkh39oA58YfBR0EktQENVYDt0"; // Replace with your Google Drive API key
+
 
 const BufferedReadersPage = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -38,7 +39,7 @@ const BufferedReadersPage = () => {
   // 📌 Fetch Subfolders (2015-16, 2016-17)
   async function getSubfolders() {
     try {
-      const url = `https://www.googleapis.com/drive/v3/files?q='${BUFFERED_READERS_FOLDER_ID}'+in+parents+and+mimeType='application/vnd.google-apps.folder'&key=${API_KEY}&fields=files(id, name)`;
+      const url = `http://localhost:3001/subfolders?folderId=${BUFFERED_READERS_FOLDER_ID}`;
       const response = await fetch(url);
       if (!response.ok) throw new Error("Failed to fetch subfolders");
       
@@ -54,7 +55,7 @@ const BufferedReadersPage = () => {
   // 📌 Fetch PDFs from a Given Folder
   async function getPdfsFromFolder(folderId) {
     try {
-      const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents+and+mimeType='application/pdf'&key=${API_KEY}&fields=files(id, name, webViewLink)`;
+      const url = `http://localhost:3001/pdfs?folderId=${folderId}`;
       const response = await fetch(url);
       if (!response.ok) throw new Error(`Failed to fetch PDFs for folder ${folderId}`);
       
@@ -113,27 +114,7 @@ const BufferedReadersPage = () => {
   return (
     <div className="buffered-readers-container">
       {/* Navbar */}
-      <div className={`Topnav ${isSticky ? 'sticky' : ''}`}>
-        <div className="logo">
-          <a href="https://cses.iitism.ac.in/"><img src={logoImage1} alt="CSE Logo" /></a>
-        </div>
-        <div className="nav-group">
-          <div className="nav-basic">
-            <Link to="/" className="nav-link">Home</Link>
-            <Link to="/teams" className="nav-link">Teams</Link>
-          </div>
-          <div className="nav-special">
-            <Link to="/bytestreams" className="nav-link highlight bytestreams">Bytestreams</Link>
-            <Link to="/buffered-readers" className="nav-link highlight buffered-readers active">
-              Buffered Readers
-              <div className="active-indicator"></div>
-            </Link>
-          </div>
-          <div className="nav-about">
-            <Link to="/about" className="nav-link">About Us</Link>
-          </div>
-        </div>
-      </div>
+      <Navbar/>
 
       {/* Archive Header */}
       <div className="archive-header bytestreams-header">
@@ -202,7 +183,7 @@ const BufferedReadersPage = () => {
 </button>
                           </div>
                           <div className="magazine-image-container">
-                            <img src={bufferedReaderImage} className="magazine-image" alt="Buffered Reader" />
+                            <img src={`http://localhost:3001/thumbnail?fileId=${pdf.id}`} className="magazine-image" alt="Buffered Reader" />
                           </div>
                         </div>
                       </div>

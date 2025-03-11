@@ -5,32 +5,13 @@ import logoImage2 from './assets/logo.png';
 import logoImage1 from './assets/cse.png';
 import bufferedReaderImage from './assets/buffered_reader.png';
 import { useNavigate } from 'react-router-dom';
+import Navbar from './components/Navbar';
 const HomePage = () => {
   const navigate = useNavigate();
   return (
     <div className="home-container">
       {/* Navbar */}
-      <div className="Topnav">
-        <div className="logo">
-        <a href="https://cses.iitism.ac.in/"><img src={logoImage1} alt="CSE Logo" /></a>
-        </div>
-        <div className="nav-group">
-          <div className="nav-basic">
-            <Link to="/" className="nav-link active">
-              Home
-              <div className="active-indicator"></div>
-            </Link>
-            <Link to="/teams" className="nav-link">Teams</Link>
-          </div>
-          <div className="nav-special">
-            <Link to="/bytestreams" className="nav-link highlight bytestreams">Bytestreams</Link>
-            <Link to="/buffered-readers" className="nav-link highlight buffered-readers">Buffered Readers</Link>
-          </div>
-          <div className="nav-about">
-            <Link to="/about" className="nav-link">About Us</Link>
-          </div>
-        </div>
-      </div>
+      <Navbar />
 
       {/* Journal Header */}
       <div className="journal-header">
@@ -63,7 +44,7 @@ const HomePage = () => {
               <h3>MONSOON</h3>
               <p>MARCH</p>
               <p>v 5.1</p>
-              <button className="read-btn" onClick={() => navigate('/buffered-readers')}>READ</button>
+              <button className="read-btn" onClick={() => navigate('/buffered-readers')}>CHECK OUT</button>
             </div>
             <div className="monsoon-image">
               <img src={bufferedReaderImage} alt="Buffered Reader" />

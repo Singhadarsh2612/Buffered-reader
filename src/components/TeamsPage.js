@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './TeamsPage.css';
 import logoImage1 from '../assets/cse.png';
 import logoImage2 from '../assets/logo.png';
-
+import Navbar from './Navbar';
 // Import all the professor images
 import Ck_sir from '../assets/professor/ck_sir.jpg';
 import Dr from '../assets/professor/dr.jpg';
@@ -97,63 +97,41 @@ const TeamsPage = () => {
       { name: 'Prof. Pranav Bisht', linkedin: 'https://www.linkedin.com/in/pranav-bisht-99157492/', photo: Pb_coFIC }
     ],
     writers: [
-      { name: 'Sarthak Saumya', linkedin: '#', photo: Sharthak },
-      { name: 'Deepika Tanuvi', linkedin: '#', photo: Deepika },
-      { name: 'Eshita Paliwal', linkedin: '#', photo: Eshita },
-      { name: 'Saksham Jha', linkedin: '#', photo: Saksham },
-      { name: 'Riya Kumari', linkedin: '#', photo: Riya },
-      { name: 'Bitra Sri Pragna', linkedin: '#', photo: Pragna },
-      { name: 'Kshitiz Pratap Singh', linkedin: '#', photo: Kshitiz },
-      { name: 'Nanneboina Naga Chaitanya', linkedin: '#', photo: NagaChaitanya },
-      { name: 'Shyam Sunder', linkedin: '#', photo: Shyam },
-      { name: 'Sachin Rajguru', linkedin: '#', photo: Shacin },
-      { name: 'Rohan Garg', linkedin: '#', photo: Rohan },
-      { name: 'Sumit Kumar', linkedin: '#', photo: Sumit }
+      { name: 'Sarthak Saumya', linkedin: 'https://in.linkedin.com/in/sarthak-saumya-b6b581227', photo: Sharthak },
+      { name: 'Deepika Tanuvi', linkedin: 'https://in.linkedin.com/in/deepika-tanuvi-86b61622b', photo: Deepika },
+      { name: 'Eshita Paliwal', linkedin: 'https://in.linkedin.com/in/eshita-paliwal', photo: Eshita },
+      { name: 'Saksham Jha', linkedin: 'https://in.linkedin.com/in/saksham-jha-iitism', photo: Saksham },
+      { name: 'Riya Kumari', linkedin: 'https://in.linkedin.com/in/riya-kumari1', photo: Riya },
+      { name: 'Bitra Sri Pragna', linkedin: 'https://in.linkedin.com/in/sri-pragna-bitra-283b2b255', photo: Pragna },
+      { name: 'Kshitiz Pratap Singh', linkedin: 'https://in.linkedin.com/in/kshitiz-pratap-singh-5b66bb24a', photo: Kshitiz },
+      { name: 'Nanneboina Naga Chaitanya', linkedin: 'https://in.linkedin.com/in/naga-chaitanya-nanneboina', photo: NagaChaitanya },
+      { name: 'Shyam Sunder', linkedin: 'https://www.linkedin.com/in/shyam-s-948767255/', photo: Shyam },
+      { name: 'Sachin Rajguru', linkedin: 'https://in.linkedin.com/in/sachin-rajguru-611249296', photo: Shacin },
+      { name: 'Rohan Garg', linkedin: 'https://in.linkedin.com/in/rohan-garg-1446-', photo: Rohan },
+      { name: 'Sumit Kumar', linkedin: 'https://www.linkedin.com/in/sumit-kumar-b513102a4/', photo: Sumit }
     ],
     designers: [
       { name: 'Abhishek Prasad Das', linkedin: '#', photo: AbhishekDas },
-      { name: 'Ketham Reddy Supreeth', linkedin: '#', photo: Supreeth },
-      { name: 'Daksh Mor', linkedin: '#', photo: Daksh },
-      { name: 'Divyanshu Singh', linkedin: '#', photo: Divyanshu },
-      { name: 'Kasam Pramodha', linkedin: '#', photo: Kasam },
-      { name: 'Samarth Jindal', linkedin: '#', photo: Samarth },
-      { name: 'Jatin Kumar', linkedin: '#', photo: Jatin },
-      { name: 'Monil Chandgdhiya', linkedin: '#', photo: Monil },
-      { name: 'Robin Kumar', linkedin: '#', photo: Robin }
+      { name: 'Ketham Reddy Supreeth', linkedin: 'https://in.linkedin.com/in/supreeth-kethamreddy-189a50253', photo: Supreeth },
+      { name: 'Daksh Mor', linkedin: 'https://in.linkedin.com/in/daksh-mor', photo: Daksh },
+      { name: 'Divyanshu Singh', linkedin: 'https://www.linkedin.com/in/divyanshu-singh-9b73b2279/', photo: Divyanshu },
+      { name: 'Kasam Pramodha', linkedin: 'https://in.linkedin.com/in/pramodha-kasam-4979ab289', photo: Kasam },
+      { name: 'Samarth Jindal', linkedin: 'https://in.linkedin.com/in/samarth-jindal-1129a01b8', photo: Samarth },
+      { name: 'Jatin Kumar', linkedin: 'https://in.linkedin.com/in/jatin-kumar-053b1a298', photo: Jatin },
+      { name: 'Monil Chandgdhiya', linkedin: 'https://in.linkedin.com/in/monil-chandgadhiya-626600255', photo: Monil },
+      { name: 'Robin Kumar', linkedin: 'https://in.linkedin.com/in/robin-kumar-0b522a300', photo: Robin }
     ],
     developers: [
-      { name: 'Shreyansh Shandilya', linkedin: '#', photo: Shreyansh },
-      { name: 'Anirban Das', linkedin: '#', photo: Anirban },
-      { name: 'Shashwat Nautiyal', linkedin: '#', photo: Shashwat }
+      { name: 'Shreyansh Shandilya', linkedin: 'https://in.linkedin.com/in/shreyansh-shandilya-5a8b1b246', photo: Shreyansh },
+      { name: 'Anirban Das', linkedin: 'https://in.linkedin.com/in/anirban-das-2014412b9', photo: Anirban },
+      { name: 'Shashwat Nautiyal', linkedin: 'https://in.linkedin.com/in/shashwat-nautiyal-347458280', photo: Shashwat }
     ]
   };
 
   return (
     <div className="teams-container">
       {/* Navbar - Same as HomePage */}
-      <div className={`Topnav ${isSticky ? 'sticky' : ''}`}>
-        <div className="logo">
-        <a href="https://cses.iitism.ac.in/"><img src={logoImage1} alt="CSE Logo" /></a>
-        </div>
-        <div className="nav-group">
-          <div className="nav-basic">
-            <Link to="/" className="nav-link">
-              Home
-            </Link>
-            <Link to="/teams" className="nav-link active">
-              Teams
-              <div className="active-indicator"></div>
-            </Link>
-          </div>
-          <div className="nav-special">
-            <Link to="/bytestreams" className="nav-link highlight bytestreams">Bytestreams</Link>
-            <Link to="/buffered-readers" className="nav-link highlight buffered-readers">Buffered Readers</Link>
-          </div>
-          <div className="nav-about">
-            <Link to="/about" className="nav-link">About Us</Link>
-          </div>
-        </div>
-      </div>
+      <Navbar/>
 
       {/* Team Header */}
       <div className="team-header">
